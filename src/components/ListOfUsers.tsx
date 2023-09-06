@@ -1,91 +1,75 @@
-import { CheckIcon } from '@heroicons/react/24/solid'
+import { Card, Table, TableHead, TableRow, Icon, TableHeaderCell, TableBody, TableCell, Text, Title, Badge } from '@tremor/react'
 
-import {
-  Card,
-  Table,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableBody,
-  TableCell,
-  Text,
-  Title,
-  Badge
-} from '@tremor/react'
-
-const data = [
+import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/outline'
+const users: {
+  name: string
+  id: number
+  email: string
+  github: string
+}[] = [
   {
     name: 'Viola Amherd',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Defence, Civil Protection and Sport (DDPS)',
-    status: 'active'
+    id: 1,
+    email: 'viola@email.com',
+    github: 'viola_amherd'
   },
   {
     name: 'Simonetta Sommaruga',
-    Role: 'Federal Councillor',
-    departement:
-      'The Federal Department of the Environment, Transport, Energy and Communications (DETEC)',
-    status: 'active'
+    id: 2,
+    email: 'simonetta@email.com',
+    github: 'simonetta_sommaruga'
   },
   {
     name: 'Alain Berset',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Home Affairs (FDHA)',
-    status: 'active'
+    id: 3,
+    email: 'alain@email.com',
+    github: 'alain_berset'
   },
   {
     name: 'Ignazio Cassis',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Foreign Affairs (FDFA)',
-    status: 'active'
-  },
-  {
-    name: 'Ueli Maurer',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Finance (FDF)',
-    status: 'active'
-  },
-  {
-    name: 'Guy Parmelin',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Economic Affairs, Education and Research (EAER)',
-    status: 'active'
-  },
-  {
-    name: 'Karin Keller-Sutter',
-    Role: 'Federal Councillor',
-    departement: 'The Federal Department of Justice and Police (FDJP)',
-    status: 'active'
+    id: 4,
+    email: 'ignazio@email.com',
+    github: 'ignazio_cassis'
   }
 ]
 
 export function ListOfUsers () {
   return (
     <Card>
-      <Title>List of Swiss Federal Councillours</Title>
-      <Table className='mt-5'>
+      <Title>
+        Users
+        <Badge className='ml-2'> {users.length}</Badge>
+      </Title>
+      <Table>
         <TableHead>
           <TableRow>
+            <TableHeaderCell>Id</TableHeaderCell>
             <TableHeaderCell>Name</TableHeaderCell>
-            <TableHeaderCell>Position</TableHeaderCell>
-            <TableHeaderCell>Department</TableHeaderCell>
-            <TableHeaderCell>Status</TableHeaderCell>
+            <TableHeaderCell>Email</TableHeaderCell>
+            <TableHeaderCell>Actions</TableHeaderCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((item) => (
+          {users.map((item) => (
             <TableRow key={item.name}>
-              <TableCell>{item.name}</TableCell>
-              <TableCell>
-                <Text>{item.Role}</Text>
+              <TableCell>{item.id}</TableCell>
+              <TableCell className='flex items-center gap-4'>
+                <img
+                  className='w-12 h-12 rounded-full'
+                  src={`https://unavatar.io/github${item.github}`}
+                  alt={`github image for ${item.github}`} />
+                <Text>{item.name}</Text>
               </TableCell>
               <TableCell>
-                <Text>{item.departement}</Text>
+                <Text>{item.email}</Text>
               </TableCell>
               <TableCell>
-                <Badge color='emerald' icon={CheckIcon}>
-                  {item.status}
-                </Badge>
+                <button type='button'>
+                  <Icon size='md' icon={TrashIcon} />
+                </button>
+                <button>
+                  <Icon size='md' icon={PencilSquareIcon} />
+                </button>
               </TableCell>
             </TableRow>
           ))}

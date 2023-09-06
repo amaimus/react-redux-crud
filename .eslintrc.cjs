@@ -34,6 +34,7 @@ module.exports = {
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/triple-slash-reference": "off",
         indent: ["error", 2],
-        "jsx-quotes": ["error", "prefer-single"]
+        "jsx-quotes": ["error", "prefer-single"],
+        "@typescript-eslint/array-type": "off"
     }
 }
