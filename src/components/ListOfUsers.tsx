@@ -1,15 +1,11 @@
 import { Card, Table, TableHead, TableRow, Icon, TableHeaderCell, TableBody, TableCell, Text, Title, Badge } from '@tremor/react'
 import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/outline'
-import { useAppDispatch, useAppSelector } from '../hooks/store'
-import { type UserId, deleteUserById } from '../store/users/slice'
+import { useUserActions } from '../hooks/useUserActions'
+import { useAppSelector } from '../hooks/store'
 
 export function ListOfUsers () {
   const users = useAppSelector(state => state.users)
-  const dispatch = useAppDispatch()
-
-  const handleDelete = (id: UserId) => {
-    dispatch(deleteUserById(id))
-  }
+  const { removeUser } = useUserActions()
 
   return (
     <Card>
@@ -41,7 +37,7 @@ export function ListOfUsers () {
                 <Text>{user.email}</Text>
               </TableCell>
               <TableCell>
-                <button type='button' onClick={() => { handleDelete(user.id) }}>
+                <button type='button' onClick={() => { removeUser(user.id) }}>
                   <Icon size='md' icon={TrashIcon} />
                 </button>
                 <button>
