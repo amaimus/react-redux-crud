@@ -10,8 +10,7 @@ export interface User {
 export interface UserWithId extends User {
   id: UserId
 }
-
-const initialState: UserWithId[] = [
+const DEFAULT_STATE_MOCK = [
   {
     id: '1',
     name: 'Viola Amherd',
@@ -37,6 +36,13 @@ const initialState: UserWithId[] = [
     github: 'ignazio_cassis'
   }
 ]
+
+const initialState: UserWithId[] = (() => {
+  const persistedState = localStorage.getItem('__redux__state__')
+  return persistedState != null
+    ? JSON.parse(persistedState).users
+    : DEFAULT_STATE_MOCK
+})()
 
 export const usersSlice = createSlice({
   name: 'users',
