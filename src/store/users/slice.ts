@@ -10,6 +10,7 @@ export interface User {
 export interface UserWithId extends User {
   id: UserId
 }
+
 const DEFAULT_STATE_MOCK = [
   {
     id: '1',
@@ -48,6 +49,11 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
+    addNewUser: (state, action: PayloadAction<User>) => {
+      const id = crypto.randomUUID()
+      console.log(action.payload)
+      return [...state, { id, ...action.payload }]
+    },
     deleteUserById: (state, action: PayloadAction<UserId>) => {
       const id = action.payload
       return state.filter(user => user.id !== id)
@@ -56,4 +62,4 @@ export const usersSlice = createSlice({
 })
 
 export default usersSlice.reducer
-export const { deleteUserById } = usersSlice.actions
+export const { deleteUserById, addNewUser } = usersSlice.actions

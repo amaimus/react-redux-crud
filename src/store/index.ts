@@ -11,7 +11,6 @@ export const store = configureStore({
     users: usersReducer
   },
   middleware: [persistanceLocalStorageMiddleware]
-
 })
 
 export type RootState = ReturnType<typeof store.getState>
