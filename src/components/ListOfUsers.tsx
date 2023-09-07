@@ -1,39 +1,10 @@
 import { Card, Table, TableHead, TableRow, Icon, TableHeaderCell, TableBody, TableCell, Text, Title, Badge } from '@tremor/react'
-
 import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/outline'
-const users: {
-  name: string
-  id: number
-  email: string
-  github: string
-}[] = [
-  {
-    name: 'Viola Amherd',
-    id: 1,
-    email: 'viola@email.com',
-    github: 'viola_amherd'
-  },
-  {
-    name: 'Simonetta Sommaruga',
-    id: 2,
-    email: 'simonetta@email.com',
-    github: 'simonetta_sommaruga'
-  },
-  {
-    name: 'Alain Berset',
-    id: 3,
-    email: 'alain@email.com',
-    github: 'alain_berset'
-  },
-  {
-    name: 'Ignazio Cassis',
-    id: 4,
-    email: 'ignazio@email.com',
-    github: 'ignazio_cassis'
-  }
-]
+import { useAppSelector } from '../hooks/store'
 
 export function ListOfUsers () {
+  const users = useAppSelector(state => state.users)
+
   return (
     <Card>
       <Title>
