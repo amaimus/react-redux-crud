@@ -8,7 +8,7 @@ Desarrollamos un CRUD para una lista de usuarios utilizando React, TypeScript y 
 
 We've created a user management CRUD application with React, TypeScript, and Redux Toolkit, leveraging Tremor for the UI, middleware for localStorage data persistence, Sooner for notifications, and built-in CRUD operations with rollback support.
 
-![react-redux-crud](https://github.com/amaimus/react-redux-crud/assets/35699916/229815b1-fd39-4416-a719-5409c4c37a30)
+<img src='public/react-redux-crud.png'/>
 
 --- 
 
